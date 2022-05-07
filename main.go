@@ -3,16 +3,13 @@ package main
 import (
 	"os"
 
+	"github.com/gofiber/fiber/v2"
+	_ "github.com/joho/godotenv/autoload" // load .env file automatically
+
 	"github.com/create-go-app/fiber-go-template/pkg/configs"
 	"github.com/create-go-app/fiber-go-template/pkg/middleware"
 	"github.com/create-go-app/fiber-go-template/pkg/routes"
 	"github.com/create-go-app/fiber-go-template/pkg/utils"
-
-	"github.com/gofiber/fiber/v2"
-
-	_ "github.com/create-go-app/fiber-go-template/docs" // load API Docs files (Swagger)
-
-	_ "github.com/joho/godotenv/autoload" // load .env file automatically
 )
 
 // @title API
@@ -46,7 +43,7 @@ func main() {
 	// Start server (with or without graceful shutdown).
 	if os.Getenv("STAGE_STATUS") == "dev" {
 		utils.StartServer(app)
-	} else {
-		utils.StartServerWithGracefulShutdown(app)
+		} else {
+			utils.StartServerWithGracefulShutdown(app)
+		}
 	}
-}
